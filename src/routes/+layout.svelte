@@ -1,9 +1,24 @@
 <script lang="ts">
-	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 	import { page } from '$app/state';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import '@bprogress/core/css';
+	import './layout.css';
+	import { BProgress } from '@bprogress/core';
 
+	BProgress.configure({ showSpinner: false });
 	let { children } = $props();
+
+	let loadingTimeout: any;
+
+	beforeNavigate(() => {
+		loadingTimeout = setTimeout(() => {
+			BProgress.start();
+		}, 500);
+	});
+	afterNavigate(() => {
+		clearTimeout(loadingTimeout);
+		BProgress.done();
+	});
 </script>
 
 <svelte:head>
