@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+@plugin 'daisyui';
+
+@plugin 'daisyui' {
+	themes:
+		light --preferswhite,
+		black --default;
+}
+
+@custom-variant no-js {
+	&:where(html.no-js *) {
+		@slot;
+	}
+}

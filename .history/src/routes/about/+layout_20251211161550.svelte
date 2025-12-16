@@ -1,0 +1,10 @@
+<script lang="ts">
+	import type { LayoutProps } from './$types';
+
+	let { data, children }: LayoutProps = $props();
+</script>
+
+<div class="bg-purple-700 p-4">
+	<h1 class="mb-2 text-3xl">About Layout</h1>
+	{@render children()}
+</div>
