@@ -5,5 +5,12 @@
 	"editor.formatOnSave": true,
 	"workbench.editor.labelFormat": "short",
 	"workbench.tree.indent": 16,
-	"explorer.compactFolders": false
+	"explorer.compactFolders": false,
+	"cSpell.words": [
+		"bprogress",
+		"daisyui",
+		"preferswhite",
+		"vercel",
+		"Vite"
+	]
 }
