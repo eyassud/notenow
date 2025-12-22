@@ -1,9 +1,17 @@
 // import type { PageLoad } from './$types';
 
+import Rect from '$lib/rect.js';
 import type { Post, PostComment } from '$lib/types.js';
 import { error } from '@sveltejs/kit';
 
-export const load = async ({ params, fetch }) => {
+export const load = async ({ params, fetch, depends }) => {
+	// await parent();
+	depends('blog:single_page');
+	console.log('blog/[id] page load');
+
+	// if (Math.random() > 0.5) {
+	// 	error(500, 'Network error');
+	// }
 	async function fetchPost() {
 		const postRes = await fetch(`https://dummyjson.com/posts/${params.id}`);
 		if (postRes.status !== 200) {
@@ -26,6 +34,7 @@ export const load = async ({ params, fetch }) => {
 		comments: commentsPromise,
 		post,
 		title: post.title,
-		description: post.body.slice(0, 200)
+		description: post.body.slice(0, 200),
+		rect: new Rect(0, 0, 100, 100)
 	};
 };
